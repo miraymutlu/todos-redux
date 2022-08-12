@@ -1,11 +1,15 @@
 import React from "react";
+import {useSelector} from "react-redux"
 
 function ContentFooter() {
+  const items = useSelector((state)=> state.todos.items);
+  const itemsLeft=items.filter((item)=> !item.completed).length;
+
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>2</strong>{" "}
-        items left
+        <strong>{itemsLeft}</strong>{" "}
+        item{itemsLeft > 1 && "s"} left
       </span>
       <ul className="filters">
         <li>

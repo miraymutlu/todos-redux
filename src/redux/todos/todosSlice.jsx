@@ -12,7 +12,7 @@ export const todosSlice = createSlice({
       {
         id: 2,
         title: "Read a book",
-        completed: false,
+        completed: true,
       },
     ],
     activeFilter: "all",

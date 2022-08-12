@@ -7,11 +7,13 @@ import {
   getTodoAsync,
 } from "../../redux/todos/todosSlice";
 import Loading from "./Loading";
+import Error from "./Error";
 
 function List() {
   const dispatch = useDispatch();
   const filteredTodos = useSelector(selectFilteredTodos);
   const isLoading = useSelector((state) =>state.todos.isLoading);
+  const error = useSelector((state)=> state.todos.error);
 
   useEffect(() => {
     dispatch(getTodoAsync());
@@ -25,6 +27,10 @@ function List() {
 
   if(isLoading){
     return <Loading />;
+  }
+
+  if(error){
+    return <Error message={error}/>;
   }
 
   return (

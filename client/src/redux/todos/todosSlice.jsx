@@ -67,7 +67,7 @@ export const todosSlice = createSlice({
     },
     [addTodoAsync.rejected]: (state, action) => {
       state.addNewTodoIsLoading = false;
-      state.error = action.error.message;
+      state.addNewTodoError = action.error.message;
     },
   },
 });

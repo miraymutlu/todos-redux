@@ -4,7 +4,7 @@ import axios from "axios";
 export const getTodoAsync = createAsyncThunk(
   "todos/getTodosAsync",
   async () => {
-    const res = await axios("http://localhost:7000/todos");
+    const res = await axios(`${process.env.REACT_APP_API_BASE_ENDPOINT}/todos`);
     return await res.data;
   }
 );
@@ -12,7 +12,7 @@ export const getTodoAsync = createAsyncThunk(
 export const addTodoAsync = createAsyncThunk(
   "todos/addTodosAsync",
   async (data) => {
-    const res = await axios.post("http://localhost:7000/todos",data);
+    const res = await axios.post(`${process.env.REACT_APP_API_BASE_ENDPOINT}/todos`,data);
     return await res.data;
   }
 );

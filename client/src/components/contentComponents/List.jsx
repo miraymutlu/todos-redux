@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  toggle,
   destroy,
   selectFilteredTodos,
   getTodoAsync,
+  toggleTodoAsync,
 } from "../../redux/todos/todosSlice";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -25,6 +25,10 @@ function List() {
     }
   };
 
+  const handleToggle = async (id, completed) =>{
+      await dispatch(toggleTodoAsync({id, data:{completed}}));
+  };
+
   if(isLoading){
     return <Loading />;
   }
@@ -42,7 +46,7 @@ function List() {
               className="toggle"
               type="checkbox"
               checked={item.completed}
-              onChange={() => dispatch(toggle({ id: item.id }))}
+              onChange={() => handleToggle(item.id, !item.completed)}
             />
             <label>{item.title}</label>
             <button

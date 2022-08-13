@@ -47,7 +47,7 @@ export const todosSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
-    activeFilter: "all",
+    activeFilter: localStorage.getItem("activeFilter"),
     addNewTodo:{
       isLoading: false,
       error: false,
@@ -109,6 +109,7 @@ export const selectFilteredTodos = (state) => {
       : todo.completed === true
   );
 };
+export const selectActiveFilter = (state) => state.todos.activeFilter;
 export const {  changeActiveFilter, clearCompleted } =
   todosSlice.actions;
 export default todosSlice.reducer;
